@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Giganci Programowania – Piotrków Trybunalski</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.giganciprogramowania.edu.pl/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Signika', sans-serif;background: #f9f9f9; margin: 0; padding: 0; }
+    .container { max-width: 1100px; margin: auto; padding: 2rem; background: white; }
+    h1, h2 { color: #e67e22; }
+    .group { margin-bottom: 2rem; }
+    .form-container { background: #f0f0f0; padding: 1rem; border-radius: 8px; }
+    label { display: block; margin-top: 1rem; }
+    input, textarea { width: 100%; padding: 0.5rem; font-size: 1rem; margin-top: 0.25rem; }
+    button { margin-top: 1rem; background: #e67e22; color: white; padding: 0.7rem 1.2rem; border: none; cursor: pointer; }
+    footer { background-color: transparent; text-align: center; padding: 1rem; margin-top: 2rem; }
+    .text-orange { color: #e67e22; }
+    .location-module-header__place { 
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
+    .location-module-header__place svg {
+        -webkit-animation: ring 5s ease-in-out 1.5s infinite;
+        animation: ring 5s ease-in-out 1.5s infinite;
+        height: 3rem;
+        margin-right: 2.4rem;
+        min-width: 3.4rem;
+        width: 3.4rem;
+    }
+    .location-module-header__place a {
+       font-size: 1.5rem;
+       font-weight: 600;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+        -webkit-transition: color .25s var(--ease-out-cubic);
+        transition: color .25s var(--ease-out-cubic);
+    }
+    footer a  {
+        color: black;
+    }
+    footer a :hover {
+        color: #575757;
+    }
+    .location-module-header a {
+        -webkit-transition: color .3s ease;
+        transition: color .3s ease;
+    }
+    .location-module-header a:hover {
+        color: #575757;
+    }
+    .color-orange {color: #ED7F2C} 
+    .button-orange {background-color: #ED7F2C;} 
+    .button-orange:hover {background-color: rgba(237, 127, 44, 0.8)} 
+    .dynamic-fact {
+       transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    @-webkit-keyframes ring {
+        0% { -webkit-transform: rotateZ(0); }
+        1% { -webkit-transform: rotateZ(30deg); }
+        3% { -webkit-transform: rotateZ(-28deg); }
+        5% { -webkit-transform: rotateZ(34deg); }
+        7% { -webkit-transform: rotateZ(-32deg); }
+        9% { -webkit-transform: rotateZ(30deg); }
+        11% { -webkit-transform: rotateZ(-28deg); }
+        13% { -webkit-transform: rotateZ(26deg); }
+        15% { -webkit-transform: rotateZ(-24deg); }
+        17% { -webkit-transform: rotateZ(22deg); }
+        19% { -webkit-transform: rotateZ(-20deg); }
+        21% { -webkit-transform: rotateZ(18deg); }
+        23% { -webkit-transform: rotateZ(-16deg); }
+        25% { -webkit-transform: rotateZ(14deg); }
+        27% { -webkit-transform: rotateZ(-12deg); }
+        29% { -webkit-transform: rotateZ(10deg); }
+        31% { -webkit-transform: rotateZ(-8deg); }
+        33% { -webkit-transform: rotateZ(6deg); }
+        35% { -webkit-transform: rotateZ(-4deg); }
+        37% { -webkit-transform: rotateZ(2deg); }
+        39% { -webkit-transform: rotateZ(-1deg); }
+        41% { -webkit-transform: rotateZ(1deg); }
+
+        43% { -webkit-transform: rotateZ(0); }
+        100% { -webkit-transform: rotateZ(0); }
+        }
+
+        @-moz-keyframes ring {
+        0% { -moz-transform: rotate(0); }
+        1% { -moz-transform: rotate(30deg); }
+        3% { -moz-transform: rotate(-28deg); }
+        5% { -moz-transform: rotate(34deg); }
+        7% { -moz-transform: rotate(-32deg); }
+        9% { -moz-transform: rotate(30deg); }
+        11% { -moz-transform: rotate(-28deg); }
+        13% { -moz-transform: rotate(26deg); }
+        15% { -moz-transform: rotate(-24deg); }
+        17% { -moz-transform: rotate(22deg); }
+        19% { -moz-transform: rotate(-20deg); }
+        21% { -moz-transform: rotate(18deg); }
+        23% { -moz-transform: rotate(-16deg); }
+        25% { -moz-transform: rotate(14deg); }
+        27% { -moz-transform: rotate(-12deg); }
+        29% { -moz-transform: rotate(10deg); }
+        31% { -moz-transform: rotate(-8deg); }
+        33% { -moz-transform: rotate(6deg); }
+        35% { -moz-transform: rotate(-4deg); }
+        37% { -moz-transform: rotate(2deg); }
+        39% { -moz-transform: rotate(-1deg); }
+        41% { -moz-transform: rotate(1deg); }
+
+        43% { -moz-transform: rotate(0); }
+        100% { -moz-transform: rotate(0); }
+        }
+
+        @keyframes ring {
+        0% { transform: rotate(0); }
+        1% { transform: rotate(30deg); }
+        3% { transform: rotate(-28deg); }
+        5% { transform: rotate(34deg); }
+        7% { transform: rotate(-32deg); }
+        9% { transform: rotate(30deg); }
+        11% { transform: rotate(-28deg); }
+        13% { transform: rotate(26deg); }
+        15% { transform: rotate(-24deg); }
+        17% { transform: rotate(22deg); }
+        19% { transform: rotate(-20deg); }
+        21% { transform: rotate(18deg); }
+        23% { transform: rotate(-16deg); }
+        25% { transform: rotate(14deg); }
+        27% { transform: rotate(-12deg); }
+        29% { transform: rotate(10deg); }
+        31% { transform: rotate(-8deg); }
+        33% { transform: rotate(6deg); }
+        35% { transform: rotate(-4deg); }
+        37% { transform: rotate(2deg); }
+        39% { transform: rotate(-1deg); }
+        41% { transform: rotate(1deg); }
+
+        43% { transform: rotate(0); }
+        100% { transform: rotate(0); }
+        }
+  </style>
+</head>
+<body>
+
+<!-- SECTION -->
+<section class="pt-5 px-5 bg-white location-module-header">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h1 class="display-6 fw-bold text-dark text-wrap">
+            <!-- HERE REPLACE LOCATION -->
+          UCZYMY<br>PROGRAMOWANIA DZIECI I<br>MŁODZIEŻY W PIOTRKOWIE<br>TRYBUNALSKIM
+        </h1>
+        <ul class="list-unstyled mt-4">
+          <li class="h3 color-orange mt-3 location-module-header__place">
+            <svg class="is-right icon me-2"><use xlink:href="#icon-location-place">
+                <svg id="icon-location-place" viewBox="0 0 34 46">
+                    <ellipse cx="17" cy="37.5" rx="17" ry="8.5" fill="#D9D9D9"></ellipse>
+                    <path d="M29.482 8.05a14.284 14.284 0 0 0-4.647-5.325A14.203 14.203 0 0 0 18.215.29a16.116 16.116 0 0 0-3.232 0 14.207 14.207 0 0 0-6.62 2.435A14.288 14.288 0 0 0 3.714 8.05a15.513 15.513 0 0 0 2.11 17.01l9.673 11.813a1.426 1.426 0 0 0 1.1.522 1.42 1.42 0 0 0 1.1-.522l9.675-11.812a15.513 15.513 0 0 0 2.11-17.01ZM16.599 20.231a5.679 5.679 0 0 1-3.165-.964 5.716 5.716 0 0 1-2.098-2.567 5.744 5.744 0 0 1 1.234-6.235 5.674 5.674 0 0 1 6.208-1.24 5.702 5.702 0 0 1 2.557 2.107 5.738 5.738 0 0 1-.71 7.222 5.691 5.691 0 0 1-4.026 1.677Z" fill="#ED7F2D"></path>
+                </svg>
+            </use></svg>
+            <!-- HERE REPLACE LOCATION -->
+            <a href="#location-map" class="text-orange">Piotrków Trybunalski<br>ul. Gabriela Narutowicza 18A</a>
+          </li>
+          <li class="h3 color-orange mt-3 location-module-header__place">
+            <svg class="is-right icon me-2"><use xlink:href="#icon-location-place">
+                <svg id="icon-location-place" viewBox="0 0 34 46">
+                    <ellipse cx="17" cy="37.5" rx="17" ry="8.5" fill="#D9D9D9"></ellipse>
+                    <path d="M29.482 8.05a14.284 14.284 0 0 0-4.647-5.325A14.203 14.203 0 0 0 18.215.29a16.116 16.116 0 0 0-3.232 0 14.207 14.207 0 0 0-6.62 2.435A14.288 14.288 0 0 0 3.714 8.05a15.513 15.513 0 0 0 2.11 17.01l9.673 11.813a1.426 1.426 0 0 0 1.1.522 1.42 1.42 0 0 0 1.1-.522l9.675-11.812a15.513 15.513 0 0 0 2.11-17.01ZM16.599 20.231a5.679 5.679 0 0 1-3.165-.964 5.716 5.716 0 0 1-2.098-2.567 5.744 5.744 0 0 1 1.234-6.235 5.674 5.674 0 0 1 6.208-1.24 5.702 5.702 0 0 1 2.557 2.107 5.738 5.738 0 0 1-.71 7.222 5.691 5.691 0 0 1-4.026 1.677Z" fill="#ED7F2D"></path>
+                </svg>
+            </use></svg>
+            <!-- HERE REPLACE LOCATION -->
+            <a href="#location-map" class="text-orange">Tel. 503 600 095</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-6 text-center">
+        <img src="img/home-bannerkopia.png" alt="Zajęcia programowania" class="img-fluid rounded">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION -->
+<section class="px-5 bg-white">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- LEFT COLUMN – CARD WITH LIST -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="p-4 shadow rounded bg-white">
+          <ul class="list-unstyled mb-4">
+            <li class="d-flex align-items-start mb-3">
+              <span class="me-3 text-orange fs-4">✔</span>
+              <span>Szukasz dla Dziecka nowych, inspirujących zajęć?</span>
+            </li>
+            <li class="d-flex align-items-start mb-3">
+              <span class="me-3 text-orange fs-4">✔</span>
+              <span>Czy chcesz przekuć pasję do gier Twojego Dziecka w przyszłościowe hobby?</span>
+            </li>
+            <li class="d-flex align-items-start mb-3">
+              <span class="me-3 text-orange fs-4">✔</span>
+              <span>Chcesz, aby Twoje Dziecko rozwinęło kreatywność i logiczne myślenie?</span>
+            </li>
+          </ul>
+          <p class="fw-semibold text-orange fs-5">
+            Zadbaj o jego rozwój już teraz:<br>
+            zapisz je na kurs do Gigantów Programowania!
+          </p>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN – CTA -->
+      <div class="col-md-6 text-center">
+        <h2 class="fw-bold mb-3">Trwają zapisy na kursy stacjonarne w<br>Piotrkowie Trybunalskim</h2>
+        <p class="text-orange fw-bold fs-5 mb-4">Śpiesz się – ilość miejsc jest ograniczona!</p>
+        <a href="#register-form" class="btn btn-lg button-orange text-white fw-semibold px-5 py-2 shadow-sm rounded-pill">
+          Dołącz już teraz →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION -->
+<section class="py-5 bg-light position-relative">
+  <div class="px-5 container position-relative">
+
+    <div class="position-absolute translate-middle-y" style="z-index: 10; right: 1rem; width: 45%;">
+      <div class="p-3 bg-white shadow rounded text-orange fw-semibold dynamic-fact" id="fact-box" style="min-width: 320px;">
+      </div>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h3 class="fw-bold mb-4">Dlaczego warto uczyć się programowania od najmłodszych lat?</h3>
+        <img src="img/rocket.png" alt="Rakieta z dzieckiem" class="img-fluid">
+      </div>
+
+      <div class="col-lg-6">
+        <h4 class="fw-bold mb-4">Dzięki kursowi programowania Twoje dziecko:</h4>
+        <ul class="list-unstyled">
+          <li class="mb-4">
+            <div class="d-flex align-items-start">
+              <span class="text-orange fs-5 me-2">✔</span>
+              <div>
+                <strong>Pozna i opanuje najważniejsze elementy języka programowania:</strong>
+                <ul class="mb-0">
+                  <li>wyrażenia warunkowe (if - else)</li>
+                  <li>pętle (for, while)</li>
+                  <li>zmienne</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="mb-4">
+            <div class="d-flex align-items-start">
+              <span class="text-orange fs-5 me-2">✔</span>
+              <div>
+                <strong>Nauczy się wykorzystywać wiedzę matematyczną w praktyce</strong>
+                <p class="mb-0">operacje arytmetyczne, oś liczbowa, układ współrzędnych</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex align-items-start">
+              <span class="text-orange fs-5 me-2">✔</span>
+              <div>
+                <strong>Pozna języki programowania, dzięki którym będzie mogło tworzyć własne programy i gry</strong>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <h4 class="fw-bold mb-4">Nauka programowania rozwija</h4>
+      <div class="row justify-content-center">
+        <div class="col-md-3 mb-3">
+          <img class="location-module-icons__icon" src="/img/solved.png" alt="">
+          <div class="pt-4"><strong>Analityczne i logiczne myślenie</strong></div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <img class="location-module-icons__icon" src="/img/problem-solving.png" alt="">
+          <div class="pt-4"><strong>Umiejętność rozwiązywania problemów</strong></div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <img class="location-module-icons__icon" src="/img/creativity.png" alt="">
+          <div class="pt-4"><strong>Kreatywność</strong></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION -->
+<section class="text-start px-5">
+  <div class="container" style="background-color: transparent;">
+    <h2 style="font-size: 1.5rem;">Giganci Programowania to innowacyjna placówka edukacyjna, w której kształcimy młodych ludzi zainteresowanych programowaniem i nowymi technologiami.</h2>  
+    <div class="row">
+        <div class="col">
+            <img src="img/home-bannerkopia.png" alt="Zajęcia programowania" class="img-fluid rounded">
+        </div>
+        <div class="col align-content-center">
+            <h2 style="font-size: 1.5rem;">Za placówkę w Piotrkowie Trybunalskim odpowiada Jarosław i Karolina Abramowie</h2>  
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION -->
+<section class="px-5 bg-white" >
+  <div class="container" style="background-color: transparent;">
+
+    <h2 class="fw-bold mb-4">Jak przebiegają kursy programowania<br>w Piotrkowie Trybunalskim?</h2>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Zajęcia 1 raz w tygodniu przez 90 minut</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Możliwość odrabiania nieobecności</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> 14–18 spotkań w semestrze</div></div>
+
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Ścieżki edukacyjne umożliwiające naukę przez wiele semestrów</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Średnio 8 osób w grupie</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Kursy prowadzone przez trenerów-programistów</div></div>
+
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Stanowiska pracy wyposażone w nowoczesne komputery</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Przyjazna atmosfera</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Ciekawe scenariusze zajęć – tworzymy własne programy i gry</div></div>
+
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Dostosowane tempo zajęć</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Materiały powtórzeniowe po każdych zajęciach</div></div>
+      <div class="col"><div class="d-flex"><span class="text-orange me-2">✔</span> Wsparcie, nie ocenianie</div></div>
+    </div>
+
+    <h2 class="fw-bold mb-4">Gdzie jesteśmy?</h2>
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3 mb-md-0">
+        <img src="img/piotrkow.png" alt="Lokalizacja Gigantów" class="img-fluid rounded-4">
+      </div>
+
+      <div class="col-md-8">
+        <h5 class="fw-bold mb-3">
+          <span class="text-orange me-2">📍</span>
+          Piotrków Trybunalski, ul. Gabriela Narutowicza 18A
+        </h5>
+        <p class="mb-2">
+          <span class="text-orange me-2">📞</span>
+          <a href="tel:+48503600095" class="text-dark text-decoration-none">503 600 095</a>
+        </p>
+        <p>
+          <span class="text-orange me-2">📧</span>
+          <a href="mailto:piotrkow@giganciprogramowania.edu.pl" class="text-dark text-decoration-none">piotrkow@giganciprogramowania.edu.pl</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container text-center" style="background-color: transparent;">
+
+    <h2 class="fw-bold mb-5">Od czego najlepiej zacząć przygodę z programowaniem?</h2>
+
+    <div class="row justify-content-center g-3 mb-4">
+      <div class="col-6 col-md-2">
+        <div class="bg-white p-3 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+          <strong class="d-block mb-2">Wiek 6–7 lat</strong>
+          <small>Scratch Junior<br>(nauka przez zabawę)</small>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="bg-white p-3 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+          <strong class="d-block mb-2">Wiek 7–9 lat</strong>
+          <small>Podstawy tworzenia gier<br>(Scratch + Minecraft)</small>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="bg-white p-3 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+          <strong class="d-block mb-2">Wiek 10–12 lat</strong>
+          <small>Programy i gry komputerowe<br>(Scratch + AppInventor)</small>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="bg-white p-3 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+          <strong class="d-block mb-2">Wiek 13–15 lat</strong>
+          <small>Wstęp do programowania w<br>C++, C# lub Python</small>
+        </div>
+      </div>
+
+      <div class="col-6 col-md-2">
+        <div class="bg-white p-3 rounded shadow-sm h-100 d-flex flex-column justify-content-center">
+          <strong class="d-block mb-2">Wiek 16–18 lat</strong>
+          <small>Wstęp do programowania w<br>C++, C# lub Python</small>
+        </div>
+      </div>
+    </div>
+
+    <p class="mb-4 fs-5">
+      Jeżeli Twoje Dziecko zna już podstawy programowania – zapraszamy na wyższy poziom kursu.<br>
+      Zapraszamy również do kontaktu telefonicznego w celu indywidualnej pomocy w wyborze kursu!
+    </p>
+
+    <a href="#register-form" class="btn btn-lg button-orange text-white fw-semibold px-5 py-2 shadow-sm rounded-pill">
+      Przejdź do formularza zapisu →
+    </a>
+
+  </div>
+</section>
+
+<section class="px-5">
+    <div class="container" style="background-color: transparent;">
+        <!-- HERE REPLACE LOCATION -->
+        <h2>Harmonogram i lokalizacja</h2>
+        <p><strong>Adres:</strong> ul. Gabriela Narutowicza 18A, 97-300 Piotrków Trybunalski</p>
+        <p><strong>Zajęcia:</strong> w tygodniu w godzinach 16:00–19:35 oraz w soboty od 10:00 do 13:35.</p>
+        <div id="location-map">
+            <iframe src="https://www.google.com/maps?q=Gabriela+Narutowicza+18A+Piotrków+Trybunalski&output=embed"
+                width="100%" height="300" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </div>
+</section>
+<section class="px-5 py-5" >
+  <div class="container" style="background-color: transparent">
+
+    <h2 class="mb-4 fw-bold">Chcesz najpierw skorzystać z bezpłatnej lekcji pokazowej?</h2>
+
+    <div id="register-form" class="form-container bg-white p-4 rounded shadow-sm">
+      <form action="https://formspree.io/f/yourID" method="POST" class="d-grid gap-3">
+
+        <div>
+          <label class="form-label">Imię i nazwisko</label>
+          <input type="text" name="name" class="form-control" required>
+        </div>
+
+        <div>
+          <label class="form-label">Adres e-mail</label>
+          <input type="email" name="email" class="form-control" required>
+        </div>
+
+        <div>
+          <label class="form-label">Numer telefonu</label>
+          <input type="tel" name="phone" class="form-control">
+        </div>
+
+        <div>
+          <label class="form-label">Wiadomość</label>
+          <textarea name="message" rows="4" class="form-control"></textarea>
+        </div>
+
+        <div class="form-check d-flex align-items-center">
+          <input type="checkbox" class="form-check-input mt-1 me-2" id="rodo" required>
+          <label class="mt-0 form-check-label" for="rodo">
+            Zgadzam się na przetwarzanie danych osobowych w celu kontaktu zgodnie z polityką RODO.
+          </label>
+        </div>
+
+        <div>
+          <button type="submit" class="btn button-orange text-white fw-semibold px-4 py-2">
+            Wyślij zgłoszenie
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container text-start" style="background-color: transparent;">
+    <div class="px-5 d-flex align-items-center align-content-center" style="background-color: transparent;">
+        <div>
+            <ul class="list-unstyled" style="font-size: 0.95rem; line-height: 1.6;">
+            <li><a href="https://www.giganciprogramowania.edu.pl/agreements/Giganci_Programowania_Regulamin.pdf" target="_blank" rel="noopener noreferrer">Regulamin</a></li>
+            <li><a href="https://www.giganciprogramowania.edu.pl/agreements/Polityka-prywatności.pdf" target="_blank" rel="noopener noreferrer">Polityka prywatności</a></li>
+            <li><a href="https://www.giganciprogramowania.edu.pl/agreements/GP_Standardyochronymałoletnich.pdf" target="_blank" rel="noopener noreferrer">Standardy Ochrony Małoletnich</a></li>
+            </ul>
+        </div>
+        <div style="margin-left: auto;">
+            <img src="img/color.svg" alt="Zajęcia programowania" class="img-fluid rounded">
+            <p>© 2025 Giganci Programowania – Piotrków Trybunalski</p>
+        </div>
+    </div>
+  </div>  
+</footer>
+
+
+<script>
+  const facts = [
+    "Ponad połowa programistów zaczęła programować już w wieku od 5 do 17 lat.",
+    "9 na 10 programistów jest bardzo zadowolonych ze swojej pracy. To najbardziej szczęśliwa grupa zawodowa.",
+    "W Unii Europejskiej brakuje ponad pół miliona programistów. Największe niedobory są m.in. w Polsce."
+  ];
+
+  let currentFact = 0;
+  const factBox = document.getElementById("fact-box");
+
+  function updateFact() {
+    factBox.style.opacity = 0;
+    setTimeout(() => {
+      factBox.innerText = facts[currentFact];
+      factBox.style.opacity = 1;
+      currentFact = (currentFact + 1) % facts.length;
+    }, 600);
+  }
+
+  setInterval(updateFact, 4000);
+  updateFact(); // initial load
+</script>
+
+</body>
+</html>
