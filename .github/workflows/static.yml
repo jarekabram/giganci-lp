@@ -33,6 +33,12 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Inject Clarity Script into all HTML files
+        run: |
+          echo "$CLARITY_SCRIPT" > clarity-temp.txt
+          find . -name "*.html" -exec sed -i '/<\/body>/e cat clarity-temp.txt' {} \;
+        env:
+          CLARITY_SCRIPT: ${{ secrets.CLARITY_SCRIPT }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
